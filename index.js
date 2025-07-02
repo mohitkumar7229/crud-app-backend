@@ -4,10 +4,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import { router } from "./app/routes/web/routes.js";
 import cors from "cors";
-
 let app = express();
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("✅ Railway backend is running");
+});
 app.use("/web/api", router);
 mongoose
   .connect(process.env.DB_URL)
