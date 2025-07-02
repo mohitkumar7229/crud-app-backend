@@ -5,8 +5,19 @@ dotenv.config();
 import { router } from "./app/routes/web/routes.js";
 import cors from "cors";
 let app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://crud-app-8852.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.options("*", cors({
+  origin: "https://crud-app-8852.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 app.get("/health", (req, res) => {
   res.status(200).send("✅ Railway backend is running");
 });
