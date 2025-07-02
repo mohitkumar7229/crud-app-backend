@@ -5,12 +5,16 @@ dotenv.config();
 import { router } from "./app/routes/web/routes.js";
 import cors from "cors";
 let app = express();
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
+app.use(cors({
+    origin:['http://localhost:8000','http://127.0.0.1:8000'],
+    credentials:true
+}));
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', "http://localhost:4200");
+  res.header('Access-Control-Allow-Headers', true);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  next();
 });
 app.use(express.json());
 app.get("/health", (req, res) => {
