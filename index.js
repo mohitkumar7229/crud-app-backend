@@ -6,16 +6,9 @@ import { router } from "./app/routes/web/routes.js";
 import cors from "cors";
 let app = express();
 app.use(cors({
-    origin:['http://localhost:8000','http://127.0.0.1:8000'],
-    credentials:true
+    origin:['http://localhost:8000','http://127.0.0.1:8000', 'https://crud-app-8852.netlify.app'],
+    credentials: true
 }));
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', "http://localhost:4200");
-  res.header('Access-Control-Allow-Headers', true);
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  next();
-});
 app.use(express.json());
 app.get("/health", (req, res) => {
   res.status(200).send("✅ Railway backend is running");
