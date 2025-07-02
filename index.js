@@ -7,6 +7,9 @@ import cors from "cors";
 let app = express();
 app.use(cors());
 app.use(express.json());
+app.get("/health", (req, res) => {
+  res.status(200).send("✅ Railway backend is running");
+});
 app.get("/", (req, res) => {
   res.send("✅ Railway backend is running");
 });
