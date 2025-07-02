@@ -11,12 +11,13 @@ app.get("/", (req, res) => {
   res.send("✅ Railway backend is running");
 });
 app.use("/web/api", router);
+const port = process.env.PORT || 8080;
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {
     console.log("connected to Database");
-    app.listen(process.env.PORT || 5000, () => {
-      console.log("SERVER IS RUNNING",process.env.PORT);
+    app.listen(port, "0.0.0.0", () => {
+      console.log("SERVER IS RUNNING", port);
     });
   })
   .catch((err) => {
