@@ -16,7 +16,7 @@ mongoose
   .then(() => {
     console.log("connected to Database");
     app.listen(process.env.PORT || 5000, () => {
-      console.log("SERVER IS RUNNING");
+      console.log("SERVER IS RUNNING",process.env.PORT);
     });
   })
   .catch((err) => {
