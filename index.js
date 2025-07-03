@@ -5,6 +5,14 @@ dotenv.config();
 import { router } from "./app/routes/web/routes.js";
 import cors from "cors";
 let app = express();
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  res.setHeader("Surrogate-Control", "no-store");
+  next();
+});
+
 app.use(cors({
     origin:['http://localhost:8000','http://127.0.0.1:8000', 'https://crud-app-8852.netlify.app'],
     credentials: true
