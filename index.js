@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-    origin:['http://localhost:8000','http://127.0.0.1:8000', 'https://crud-app-8852.netlify.app'],
+    origin:['http://localhost:8000','http://localhost:4200','http://127.0.0.1:8000', 'https://crud-app-8852.netlify.app'],
     credentials: true
 }));
 app.use(express.json());
